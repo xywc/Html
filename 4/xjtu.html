@@ -1,0 +1,295 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>西安交通大学</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Storage ui kit Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<link href='//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'></head>
+<script type="text/javascript" src="js/Chart.js"></script>
+<!----Calender -------->
+  <link rel="stylesheet" href="css/clndr.css" type="text/css" />
+  <script src="js/underscore-min.js"></script>
+  <script src= "js/moment-2.2.1.js"></script>
+  <script src="js/clndr.js"></script>
+  <script src="js/site.js"></script>
+<!----End Calender -------->
+<!-- start equalizer -->		  
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery-ui.min.js"></script>
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+<script>
+$(function() {
+	 
+	    $( "#eq > span" ).each(function() {	   
+	      var value = parseInt( $( this ).text(), 10 );
+	      $( this ).empty().slider({
+	        value: value,
+	        range: "min",
+	        animate: true,
+	        orientation: "vertical"
+	      });
+	    });
+	  });
+</script>
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "777777",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "71CF97",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "2EB0E2",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "#e51937",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+    
+});
+</script>
+<!----video -------->	
+<link href="css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				title: "Big Buck Bunny",
+				m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+				poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+			});
+		},
+		swfPath: "../../dist/jplayer",
+		supplied: "m4v",
+		size: {
+			width: "475px",
+			height: "250px",
+			cssClass: "jp-video-360p"
+		},
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true,
+		remainingDuration: true,
+		toggleDuration: true
+	});
+});
+//]]>
+</script>
+<!----//video -------->
+<body>
+	
+<!---content--->
+			<div class="header-bottom">
+				<div class="container">
+					<div class="main-grids">
+						<div class="col-md-5 main-grid">
+							<div class="beautiful">
+										<!--photo-->
+                     
+									<div class="slider1">
+										<div class="arrival-grids">			 
+										     <ul id="flexiselDemo1">
+											 <li>
+												 <a href="#"><img src="images/xjtu.jpg" alt=""/>
+												 </a>
+											 </li>
+											 <li>
+													<a href="#"><img src="images/xjtu1.jpg" alt=""/>
+												 </a>
+											 </li>
+											 <li>
+												  <a href="#"><img src="images/xjtu2.jpg" alt=""/>
+												 </a>
+											 </li>
+											 <li>
+												  <a href="#"><img src="images/xjtu3.jpg" alt=""/>
+												 </a>
+											 </li>
+											 <li>
+												  <a href="#"><img src="images/xjtu4.jpg" alt=""/>
+												 </a>
+											 </li>
+											 <li>
+												  <a href="#"><img src="images/xjtu5.jpg" alt=""/>
+												 </a>
+											 </li>
+											</ul>
+											<script type="text/javascript">
+											 $(window).load(function() {			
+											  $("#flexiselDemo1").flexisel({
+												visibleItems: 3,
+												animationSpeed: 1000,
+												autoPlay: true,
+												autoPlaySpeed: 3000,    		
+												pauseOnHover:true,
+												enableResponsiveBreakpoints: true,
+												responsiveBreakpoints: { 
+													portrait: { 
+														changePoint:480,
+														visibleItems: 1
+													}, 
+													landscape: { 
+														changePoint:640,
+														visibleItems: 2
+													},
+													tablet: { 
+														changePoint:768,
+														visibleItems: 3
+													}
+												}
+											});
+											});
+											</script>
+											<script type="text/javascript" src="js/jquery.flexisel.js"></script>			 
+										</div>
+									</div>
+								
+						<!--//-->	
+								<h3>西安交通大学</h3>
+									<p class="beaut-link">posted by <a href="#">千旅千行</a> on <span> June 03 ,2018 </span></p>
+									<p class="beaut-link1"> 西安交通大学（Xi'an Jiaotong University）简称“西安交大”，位于古都西安，是中华人民共和国教育部直属、中央直管副部级建制的综合性研究型全国重点大学，是国家“七五”、“八五”首批重点建设高校之一，“211工程”首批重点建设的七所大学之一，“985工程”首批重点建设的九所高校之一，世界一流大学建设高校。是中国九校联盟（C9）、中国大学校长联谊会、“111计划”成员，“珠峰计划”首批11所名校之一，教育部首批“卓越工程师教育培养计划”高校，首批教育部来华留学示范基地建设高校，国家2011计划、“高端制造装备协同创新中心”牵头高校，“中俄交通大学联盟”成员高校，新丝绸之路大学联盟发起高校。西安交通大学为中国最早兴办的高等学府之一，肇始于1896年创建于上海的南洋公学，1921年改称交通大学，1956年国务院决定交通大学内迁西安，为交通大学西安部分，1959年定名西安交通大学</p>
+						<a href="https://baike.baidu.com/item/%E9%99%95%E8%A5%BF%E7%A7%A6%E8%85%94%E5%8D%9A%E7%89%A9%E9%A6%86/16751264" class="button">read more</a>
+								<div class="beaut-bottoms">
+									<div class="col-md-3 beaut-grid">
+										<p><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>324 </p>
+									</div>
+									<div class="col-md-3 beaut-grid">
+										<p><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>757</p>
+									</div>
+									<div class="col-md-3 beaut-grid">
+										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>124 </p>
+									</div>
+									<div class="col-md-3 beaut-grid">
+										<p><span class="glyphicon glyphicon-download" aria-hidden="true"></span>686</p>
+									</div>
+									<div class="clearfix"></div>
+								</div>							
+							<!--client-->								
+									<h3>导游推荐</h3>
+									<div class="client-grids">
+									<div class="col-md-3 client-grid">
+										<img src="images/c1.jpg" alt=""/>
+									</div>
+									<div class="col-md-3 client-grid">
+									<img src="images/c2.jpg" alt=""/>
+									</div>
+									<div class="col-md-3 client-grid">
+									<img src="images/c3.jpg" alt=""/>
+									</div>
+									<div class="col-md-3 client-grid">
+									<img src="images/c1.jpg" alt=""/>
+									</div>
+									<div class="clearfix"></div>
+								    </div>
+							<!--//-->
+							</div>
+							<!-- start equalizer -->
+						</div>
+						</div>
+						</div>
+						</div>
+<!----//图集 -------->
+                             
+</body>
+</html>

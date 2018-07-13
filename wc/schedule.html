@@ -1,0 +1,113 @@
+<!doctype html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<title>发布行程</title> 
+<style type="text/css"> 
+form { 
+  text-align: center; 
+} 
+</style> 
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery.min.js"></script>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" media="all" />	
+</head> 
+<body> 
+  <div class="header">
+		<div class="col-md-8 for">
+			<div class="col-top">
+				<div class="col-md-5 account">
+					<div class="account-in">
+						<h3>行 程 内 容</h3>											
+						<div class="your">
+							 <form action="schedule.php" method="post" onsubmit="return check()">
+								<div class="your-top">
+									<div>*开始时间：<input type="datetime-local" name="starttime" id="starttime" required=""/></div>
+								</div>
+								<div class="your-top">
+									<div>*结束时间：<input type="datetime-local" name="endtime" id="endtime" required=""/></div>
+								</div>
+								<div class="your-top">
+									<input type="text" name="address" placeholder="地址" required=""/>
+								</div>
+								<div class="your-top">
+									<input type="text" name="cost" placeholder="时薪(元/小时)"  required=""/>
+								</div>
+								<div class="your-top">
+									<div>*是否空闲：
+										<input type="radio" name="isfree" value="空闲" required="" checked>空闲
+										<input type="radio" name="isfree" value="忙碌" required="">忙碌
+									</div>
+								</div>														
+								<input type="submit" value="保存">
+								<input type="reset" value="重新填写">
+							</form>
+ 						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+ 			</div>
+ 		</div>
+ 	</div> 
+  <script type="text/javascript"> 
+    function check() {      
+      if(document.form_schedule.starttime.value.length==0){ 
+        alert("“开始时间”一定要填写哦。。。"); 
+        return false; 
+      } 
+      if(document.form_schedule.endtime.value.length==0){ 
+          alert("“结束时间”一定要填写哦。。。"); 
+          return false; 
+      }
+      if(document.form_schedule.address.value.length==0){ 
+          alert("“地址”一定要填哦。。。"); 
+          return false; 
+      }
+      if(document.form_schedule.cost.value.length==0){ 
+          alert("“时薪”忘了填哦。。。"); 
+          return false; 
+      }
+    } 
+    
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    var strHour = date.getHours();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    if (strHour >= 0 && strHour <= 9) {
+    	strHour = "0" + strHour;
+    }
+    var hour=date.getHours()+2;
+    if (hour >=24 ){
+    	hour="0"+(hour-24);
+    }	
+    if (hour >= 0 && minute <= hour) {
+    	hour = "0" + hour;
+    }
+    var minute= date.getMinutes();
+    if (minute >= 0 && minute <= 9) {
+    	minute = "0" + minute;
+    }
+    
+    var starttime = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + "T" + strHour + seperator2 + minute;
+    var endtime = date.getFullYear() + seperator1 + month + seperator1 + strDate
+    + "T" + hour + seperator2 + minute;  
+	//alert(starttime);
+    document.getElementById("starttime").value=starttime;
+    document.getElementById("endtime").value=endtime;
+  </script> 
+</body> 
+</html> 

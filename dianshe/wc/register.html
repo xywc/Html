@@ -1,0 +1,98 @@
+<!doctype html> 
+<html> 
+<head> 
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery.min.js"></script>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" media="all" />	
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<title>注册系统</title> 
+<style type="text/css"> 
+form { 
+  text-align: center; 
+} 
+</style> 
+</head> 
+<body> 
+	<div class="header">
+		<div class="col-md-8 for">
+			<div class="col-top">
+				<div class="col-md-5 account">
+					<div class="account-in">
+						<h3>请输入下列资料</h3>											
+						<div class="your">
+							 <form action="register.php" name="form_register" method="post" onSubmit="return check()">
+								<div class="your-top">
+									<i> </i>
+									<input type="text" name="account" placeholder="用户账号" required=""/>
+								</div>
+								<div class="your-top">
+									<i class="top-ic"> </i>
+									<input type="password" name="password" placeholder="密码" required=""/>
+								</div>
+								<div class="your-top">
+									<i class="top-ic"> </i>
+									<input type="password" name="re_password" placeholder="确认密码" required=""/>
+								</div>
+								<div class="your-top">
+									<i> </i>
+									<input type="text" name="name" placeholder="姓名" required=""/>
+								</div>
+
+								<div class="your-top">
+									<i> </i>
+									<input type="text" name="telephone" placeholder="电话" required=""/>
+								</div>
+					
+								<input type="submit" value="保存">
+								<input type="reset" value="重新填写" onClick="rewrite()">
+							</form>
+ 						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+ 			</div>
+ 		</div>
+ 	</div> 
+  <script type="text/javascript"> 
+  	function check() {      
+      if(document.form_register.account.value.length==0){ 
+        alert("“用户账号”一定要填写哦。。。"); 
+        return false; 
+      } 
+      if(document.form_register.account.value.length>10){ 
+          alert("“用户账号”不可以超过10个字符哦。。。"); 
+          return false; 
+      }
+      if(document.form_register.password.value.length==0){ 
+          alert("“用户密码”一定要填写哦。。。"); 
+          return false; 
+      }
+      if(document.form_register.password.value.length>10){ 
+          alert("“用户密码”不可以超过10个字符哦。。。"); 
+          return false; 
+      }
+      if(document.form_register.re_password.value.length==0){ 
+          alert("“密码确认”忘了填哦。。。"); 
+          return false; 
+      }
+      if(document.form_register.re_password.value!=document.form_register.password.value){ 
+          alert("“密码确认”字段与“用户密码”字段一定要相同哦。。。"); 
+          return false; 
+      }
+      if(document.form_register.telephone.value.length==0){ 
+          alert("您一定要留下电话号码哦。。。"); 
+          return false; 
+      }
+    } 
+    
+    function rewrite(){
+    	document.form_register.reset();
+    	window.location.href="#top";
+	}
+  </script> 
+</body> 
+</html> 

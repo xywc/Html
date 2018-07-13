@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>寻找</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--fonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--//fonts-->
+<link rel="stylesheet" type="text/css" media="all" href="css/audio.css">
+<script type="text/javascript" src="js/mediaelement-and-player.min.js"></script>	   
+</head> 
+<body>
+       	
+                <div class="search">
+							<!--	
+							 <div class="search-in">
+									<!--<form>
+										 <select name="select" id="select">
+                                          <option value="0">请选择时间</option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                          <option value="4">4</option>
+                                          <option value="5">5</option>
+                                          <option value="6">6</option>
+                                          <option value="7">7</option>
+                                          <option value="8">8</option>
+                                          <option value="9">9</option>
+                                          <option value="10">10</option>
+				                          </select>
+									</form>-->
+									<!--<form>
+										<input  id="con" type="text" value=""="请选择时间" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '请选择时间';}">
+									</form>
+								 </div>-->
+								<div class="search-in">
+									<!--<form>
+										 <select name="select" id="select1">
+                                          <option value="0">请选择景点</option>
+                                          <option value="sxqq">陕西秦腔博物馆</option>
+                                          <option value="xqg">交大西迁纪念馆</option>
+                                          <option value="xjtu">西安交通大学</option>
+                                          <option value="bmy">兵马俑</option>
+                                          <option value="sb">陕西省历史博物馆</option>
+                                          <option value="huashan">华山</option>
+                                          <option value="xasq">市区景点一览</option>
+				                          </select>
+									</form>--><form>
+										<input type="text" id="con1" value="请选择地点" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '请选择地点';}">
+									          </form>
+								 </div>
+								 <br>
+								 <input type="submit" value="寻找" class="butn">
+							</div>
+							<div id="aaa"></div>						 
+<script type="text/javascript">
+$(document).ready(function(){ 
+     $(".butn").click(function(){
+        var time =$("#con").val();
+		var dd=$("#con1").val();
+        $.ajax({
+             url: "shuzu.php",  
+             type: "POST",
+			data:{didian:dd,shijian:time},
+             dataType: "text",
+             error: function(){  
+                 alert('目前还没有这里的导游哦');  
+             },  
+             success: function(data){
+			
+			     var k=eval(data);
+				 var html="";
+				  for(var i=0;i<k.length;i++){
+		  var mdiv = document.createElement("div");
+    
+		  var limian="<div class='top-grid'>"+"<div class='content-bottom'>"+"<div class='men'>"+"<div class='men-grid'>"+"<img src='images/pi2.jpg'  alt=''>"+"</div>"+"<div class='men-grid-top'>"+"<div class='top-men'>"+"<h5>"+k[i][0]+"</h5>"+"<p>"+k[i][1]+"</p>"+"<a href='#'>"+"就是他了"+"</a>"+"</div>"+"</div>"+"<div class='clearfix'>"+"</div>"+"</div>"+"<p class='follow'>"+"被pick"+" <b>"+"  次"+"</b>"+" <span>"+"|"+" </span>"+"评分"+ "<b>"+"  "+"</b>"+"</p>"+"</div>"+"</div>";
+          //mdiv.className="search";
+		         mdiv.innerHTML=limian;
+		  mdiv.id=i;
+          document.body.appendChild(mdiv);
+				 }
+	
+                                  }
+        });
+    })
+})
+</script>
+
+</body>
+</html>
